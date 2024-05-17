@@ -6,7 +6,9 @@ export class CatsService {
   private readonly cats: Cat[] = [];
 
   create(cat: Cat) {
-    this.cats.push(cat);
+    const count = this.cats.push(cat);
+    console.log(`count: ${count}`);
+    return this.cats;
   }
 
   findAll(): Cat[] {
