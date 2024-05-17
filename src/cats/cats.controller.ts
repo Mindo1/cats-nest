@@ -4,16 +4,16 @@ import { CreateCatDto } from './dto/create-cat.dto';
 import { Cat } from './interfaces/cat.interface';
 import { ValidationPipe } from 'src/validation/validation.pipe';
 
-@Controller('cats')
+@Controller('api')
 export class CatsController {
   constructor(private catsService: CatsService) {}
 
-  @Get()
+  @Get('list')
   async findAll(): Promise<Cat[]> {
     return this.catsService.findAll();
   }
 
-  @Post('')
+  @Post('create')
   @UsePipes(ValidationPipe)
   create(@Body() createCatDto: CreateCatDto): Cat {
     this.catsService.create(createCatDto);
